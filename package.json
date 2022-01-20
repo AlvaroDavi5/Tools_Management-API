@@ -1,0 +1,14 @@
+{
+	"name": "unid_challenge_backend",
+	"version": "1.0.0",
+	"main": "app.js",
+	"author": "Alvaro Davi",
+	"license": "MIT",
+	"dependencies": {
+		"express": "^4.17.2",
+		"sequelize": "^6.13.0"
+	},
+	"devDependencies": {
+		"sequelize-cli": "^6.4.1"
+	}
+}
