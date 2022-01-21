@@ -1,0 +1,13 @@
+
+version: "3.7"
+
+services:
+  db:
+    image: mysql:latest
+    container_name: UNID_DB
+    user: root
+    environment:
+      MYSQL_DATABASE: database_name # database name sample
+      MYSQL_ROOT_PASSWORD: password # password sample
+    ports:
+      - 3306:3306
