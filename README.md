@@ -23,3 +23,19 @@ ___
  - [MySQL](https://www.mysql.com/)
  - [Express](https://expressjs.com/)
  - [Sequelize](https://sequelize.org/)
+
+---
+
+#### TODO
+
+- [x] Database
+- [x] Models
+- [x] Migrations
+- [x] Seeders
+- [ ] User Controllers
+- [ ] Tools Controllers
+- [x] API
+  - [x] HTTP Status Codes
+	- [x] REST Architecture
+- [ ] API Routes
+- [ ] API Documentation (Blueprint)
