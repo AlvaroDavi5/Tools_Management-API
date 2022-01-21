@@ -3,11 +3,12 @@ version: "3.7"
 
 services:
   db:
-    image: mysql:latest
+    image: postgres:latest
     container_name: UNID_DB
     user: root
     environment:
-      MYSQL_DATABASE: database_name # database name sample
-      MYSQL_ROOT_PASSWORD: password # password sample
+      POSTGRES_USER: postgres # default
+      POSTGRES_PASSWORD: password # password sample
+      POSTGRES_DB: database_name # database name sample
     ports:
-      - 3306:3306
+      - 5432:5432

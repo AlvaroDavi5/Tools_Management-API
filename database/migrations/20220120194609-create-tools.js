@@ -29,7 +29,7 @@ module.exports = {
 				type: Sequelize.STRING(150)
 			},
 			tags: {
-				type: Sequelize.STRING(250)
+				type: Sequelize.ARRAY(Sequelize.STRING(250))
 			},
 			created_at: {
 				type: Sequelize.DATE,

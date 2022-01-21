@@ -8,7 +8,7 @@ class Tools extends Model {
 			title: DataTypes.STRING(60),
 			link: DataTypes.STRING(85),
 			description: DataTypes.STRING(150),
-			tags: DataTypes.STRING(250)
+			tags: DataTypes.ARRAY(DataTypes.STRING(250))
 		},
 		{ sequelize: connection }
 		)
