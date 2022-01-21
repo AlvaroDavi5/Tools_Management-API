@@ -39,3 +39,7 @@ ___
 	- [x] REST Architecture
 - [ ] API Routes
 - [ ] API Documentation (Blueprint)
+- [ ] JWT/OAuth Authentication
+- [ ] Jest/Mocha/Cypress Testing
+- [x] Database Containerization
+- [ ] API Containerization
