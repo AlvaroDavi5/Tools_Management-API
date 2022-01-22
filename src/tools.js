@@ -66,20 +66,15 @@ exports.toolRead = async function(request, response) {
 }
 
 exports.toolReadAll = async function(request, response) {
-	const { method, query, params } = request
+	const { method, query } = request
 
 	try {
-		let user = null
-		const decodedToken = encryptPass.decodeToken(query.token)
-		if (params.user_id == decodedToken.decoded.user_id) {
-			user = await userController.getUserById(params.user_id)
-		}
 		const allTools = await toolController.getAllTools()
 		let tools = allTools
-		if (params.user_id) {
-			tools = tools.filter(tool => tool.user_id == user.id)
+		if (!!query.user_id) {
+			tools = tools.filter(tool => tool.user_id == query.user_id)
 		}
-		if (query.tag) {
+		if (!!query.tag) {
 			tools = tools.filter(tool => tool.tags.includes(query.tag))
 		}
 
