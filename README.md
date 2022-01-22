@@ -14,6 +14,8 @@ yarn install
 ## How to start the application
 To start the application, run the following command:  
 ```sh
+# after install Sequelize
+yarn run db_config
 # after install Node.js
 node src/app.js
 ```
