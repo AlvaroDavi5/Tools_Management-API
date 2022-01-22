@@ -11,6 +11,15 @@ yarn install
 ---
 <br>
 
+## How run the application in container
+To create and run the application in `Docker` containers, run the following command on the root of the project:  
+```sh
+# after install Docker and Docker Compose
+docker-compose up -d
+```
+___
+<br>
+
 ## How to start the application
 To start the application, run the following command:  
 ```sh
@@ -18,15 +27,6 @@ To start the application, run the following command:
 yarn run db_config
 # after install Node.js
 node src/app.js
-```
-___
-<br>
-
-## How run the application in container
-To create and run the application in `Docker` containers, run the following command on the root of the project:  
-```sh
-# after install Docker and Docker Compose
-docker-compose up -d
 ```
 ___
 <br>
