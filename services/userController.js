@@ -1,7 +1,6 @@
-import { hashValue, decodeToken } from "./encryptPass.js"
+const encryptPass = require("./encryptPass.js")
 const connection = require("../database/connection.js")
 const Users = require("../database/models/users.js")
-const Tools = require("../database/models/tools.js")
 
 
 /*
@@ -13,7 +12,7 @@ const Tools = require("../database/models/tools.js")
 */
 async function createUser(name, email, password, phone, cpf, uf, return_id) {
 	Users.init(connection)
-	const pass = await hashValue(password)
+	const pass = await encryptPass.hashValue(password)
 
 	try {
 		const user = await Users.create(
@@ -83,7 +82,7 @@ async function searchUser(email) {
 }
 
 async function getUserIdByToken(token) {
-	const userToken = decodeToken(token).decoded
+	const userToken = encryptPass.decodeToken(token).decoded
 
 	return parseInt(userToken.user_id)
 }
@@ -95,7 +94,7 @@ async function getUserByCredentials(email, password) {
 		const user = await Users.findOne({
 			where: {
 				email: email,
-				password: hashValue(password)
+				password: encryptPass.hashValue(password)
 			}
 		})
 
@@ -119,7 +118,7 @@ async function updateUser(user, name, email, password, phone, cpf, uf) {
 	try {
 		if (name) { user.name = name }
 		if (email) { user.email = email }
-		if (password) { user.password = hashValue(password) }
+		if (password) { user.password = encryptPass.hashValue(password) }
 		if (phone) { user.phone = phone }
 		if (cpf) { user.cpf = cpf }
 		if (uf) { user.uf = uf }
@@ -146,102 +145,5 @@ async function deleteUser(user) {
 	}
 }
 
-async function createPreference(user_id, image_path, default_theme, return_id) {
-	Tools.init(connection)
 
-	try {
-		const preference = await Tools.create(
-			{
-				user_id: user_id,
-				image_path: image_path,
-				default_theme: default_theme
-			}
-		)
-
-		if (return_id == true) {
-			return preference.id
-		}
-		else {
-			return true
-		}
-	}
-	catch ({ message }) {
-		return false
-	}
-}
-
-async function getPreferenceById(id) {
-	Tools.init(connection)
-
-	try {
-		const preference = await Tools.findByPk(id)
-
-		return preference
-	}
-	catch ({ message }) {
-		return null
-	}
-}
-
-async function getAllTools() {
-	Tools.init(connection)
-
-	try {
-		const tools = await Tools.findAll()
-
-		return tools
-	}
-	catch ({ message }) {
-		return null
-	}
-}
-
-async function getPreferenceIdByUserId(user_id) {
-	Tools.init(connection)
-
-	try {
-		const preference = await Tools.findOne({
-			where: {
-				user_id: user_id
-			}
-		})
-
-		return preference.id
-	}
-	catch ({ message }) {
-		return null
-	}
-}
-
-async function updateTools(preference, image_path, default_theme) {
-	Tools.init(connection)
-
-	try {
-		if (image_path) { preference.image_path = image_path }
-		if (default_theme) { preference.default_theme = default_theme }
-
-		await preference.save()
-
-		return true
-	}
-	catch ({ message }) {
-		return false
-	}
-}
-
-async function deletePreference(preference) {
-	Tools.init(connection)
-
-	try {
-		await preference.destroy()
-
-		return true
-	}
-	catch ({ message }) {
-		return false
-	}
-}
-
-
-export { createUser, getUserById, getAllUsers, searchUser, getUserIdByToken, getUserByCredentials, updateUser, deleteUser,
-createPreference, getPreferenceById, getAllTools, getPreferenceIdByUserId, updateTools, deletePreference }
+module.exports = { createUser, getUserById, getAllUsers, searchUser, getUserIdByToken, getUserByCredentials, updateUser, deleteUser }

@@ -18,11 +18,24 @@ node src/app.js
 ___
 <br>
 
+## How run the application in container
+To create and run the application in `Docker` containers, run the following command on the root of the project:  
+```sh
+docker-compose up -d
+```
+___
+<br>
+
 ### Technologies
  - [Node.js](https://nodejs.org/)
- - [MySQL](https://www.mysql.com/)
- - [Express](https://expressjs.com/)
- - [Sequelize](https://sequelize.org/)
+ - [Express.js](https://expressjs.com/)
+ - [PostgreSQL](https://www.postgresql.org/)
+ - [Sequelize ORM](https://sequelize.org/)
+ - [JWT](https://jwt.io/)
+ - [Docker](https://www.docker.com/)
+ - [Docker Compose](https://docs.docker.com/compose/)
+ - [API Blueprint](https://apiblueprint.org/)
+
 
 ---
 
@@ -32,14 +45,14 @@ ___
 - [x] Models
 - [x] Migrations
 - [x] Seeders
-- [ ] User Controllers
-- [ ] Tools Controllers
+- [x] User Controllers
+- [x] Tools Controllers
 - [x] API
   - [x] HTTP Status Codes
 	- [x] REST Architecture
-- [ ] API Routes
+- [x] API Routes
 - [ ] API Documentation (Blueprint)
-- [ ] JWT/OAuth Authentication
+- [x] JWT/OAuth Authentication
 - [ ] Jest/Mocha/Cypress Testing
 - [x] Database Containerization
 - [ ] API Containerization

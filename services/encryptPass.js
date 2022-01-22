@@ -1,19 +1,21 @@
-import { SHA256, AES } from 'crypto-js'
-import jwt from 'jsonwebtoken'
+const criptoJS = require('crypto-js')
+const jwt = require('jsonwebtoken')
+const path = require('path')
 const dotenv = require('dotenv')
+dotenv.config({path:__dirname+"/../.env.development.local"})
 
 
 function hashValue(value) {
 
-	const hashCode = SHA256(value)
+	const hashCode = criptoJS.SHA256(value)
 	const hash = hashCode.toString()
 
 	return hash
 }
 
-function encryptPass(user_id) {
+function encryptPass(pass_phrase) {
 
-	const cypher = AES.encrypt(`${user_id}`, process.env.CRYPTO_KEY)
+	const cypher = criptoJS.AES.encrypt(`${pass_phrase}`, process.env.CRYPTO_KEY)
 	AES.decrypt(cypher, process.env.CRYPTO_KEY)
 	const encriptedPass = cypher.toString()
 
@@ -22,7 +24,7 @@ function encryptPass(user_id) {
 
 function decryptPass(cypher) {
 
-	const decypher = AES.decrypt(cypher, process.env.CRYPTO_KEY)
+	const decypher = criptoJS.AES.decrypt(cypher, process.env.CRYPTO_KEY)
 	const decryptedPass = decypher.toString()
 
 	return decryptedPass
@@ -63,4 +65,4 @@ function decodeToken(token) {
 	}
 }
 
-export { hashValue, encryptPass, decryptPass, generateToken, decodeToken }
+module.exports = { hashValue, encryptPass, decryptPass, generateToken, decodeToken }
