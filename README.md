@@ -5,6 +5,7 @@
 ## Install dependencies
 To install the dependencies, run the following command:  
 ```sh
+# after install Yarn package manager
 yarn install
 ```
 ---
@@ -13,6 +14,7 @@ yarn install
 ## How to start the application
 To start the application, run the following command:  
 ```sh
+# after install Node.js
 node src/app.js
 ```
 ___
@@ -21,6 +23,7 @@ ___
 ## How run the application in container
 To create and run the application in `Docker` containers, run the following command on the root of the project:  
 ```sh
+# after install Docker and Docker Compose
 docker-compose up -d
 ```
 ___
@@ -55,4 +58,4 @@ ___
 - [x] JWT/OAuth Authentication
 - [ ] Jest/Mocha/Cypress Testing
 - [x] Database Containerization
-- [ ] API Containerization
+- [x] API Containerization
