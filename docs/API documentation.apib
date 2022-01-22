@@ -1,0 +1,475 @@
+FORMAT: 1A
+
+HOST: http://localhost:3000
+
+
+# UNID Challenge API
+
+Sample API created for UNID Backend Challenge.  
+
+by _Alvaro Davi_
+___
+
+
+
+# Group API
+
+## Index [/]
+
+### Show API Informations [GET]
++ Response 200 (application/json)
+	+ Headers
+		```
+		X-Powered-By: Express
+		Content-Type: application/json; charset=utf-8
+		Content-Length: 234
+		ETag: W/"ea-WgAZvxnwS4l37YIDt5BJUg3I/yY"
+		Date: Sat, 22 Jan 2022 04:49:48 GMT
+		Connection: keep-alive
+		Keep-Alive: timeout=5
+		```
+	+ Body
+		```json
+		{
+			"success": true,
+		"message": "Connected to API successfully",
+		"requestData": {
+			"url": "/?token=XXXXX&nome=Tester",
+			"path": "/",
+			"protocol": "http",
+			"method": "GET",
+			"status_code": 200,
+			"query": {
+				"token": "XXXXX",
+				"nome": "Tester"
+			},
+			"params": {},
+			"body": {}
+			}
+		}
+		```
++ Response 500 (application/json)
+
+
+
+# Group Users
+
+## User Auth [/user/auth]
+
+### Authenticate User [POST]
++ Request (application/json)
+	+ Body
+		```json
+		{
+			"email": "alvaro-alves@nomail.edu",
+			"password": "alvaro"
+		}
+		```
++ Response 200 (application/json)
+	+ Headers
+		```
+		X-Powered-By: Express
+		Content-Type: application/json; charset=utf-8
+		Content-Length: 304
+		ETag: W/"130-ocSh9P0BA18+yqMhnzcqYwwEBPw"
+		Date: Sat, 22 Jan 2022 06:03:24 GMT
+		Connection: keep-alive
+		Keep-Alive: timeout=5
+		```
+	+ Body
+		```json
+		{
+			"success": true,
+			"method": "POST",
+			"data": {
+				"user_id": 1,
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoiYWx2YXJvLWFsdmVzQG5vbWFpbC5lZHUiLCJpYXQiOjE2NDI4MzE0MDQsImV4cCI6MTY0Mjg0MjIwNH0.VZmVpNdml9MV0a0fU3MPDmoje786B6x91jbh0i8G36I"
+			},
+			"message": "User authenticated successfully"
+		}
+		```
++ Response 404 (application/json)
+
+## User Manipulation [/user]
+
+### Create User [POST]
++ Request (application/json)
+	+ Body
+		```json
+		{
+			"name": "Davi",
+			"email": "davi-santos@nomail.edu",
+			"password": "davi",
+			"phone": "27999999999",
+			"cpf": "000.125.111-60",
+			"uf": "ES"
+		}
+		```
++ Response 200 (application/json)
+	+ Headers
+		```
+		X-Powered-By: Express
+		Content-Type: application/json; charset=utf-8
+		Content-Length: 91
+		ETag: W/"5b-IeMvJ4qEwzkSeYpqS+64ykHnIM8"
+		Date: Sat, 22 Jan 2022 06:01:40 GMT
+		Connection: keep-alive
+		Keep-Alive: timeout=5
+		```
+	+ Body
+		```json
+		{
+			"success": true,
+			"method": "POST",
+			"data": {
+				"user_id": 2
+			},
+			"message": "User created successfully"
+		}
+		```
++ Response 404 (application/json)
+
+
+## User [/user/{user_id}]
+
+### Read User Data [GET]
++ Response 200 (application/json)
+	+ Headers
+		```
+		X-Powered-By: Express
+		Content-Type: application/json; charset=utf-8
+		Content-Length: 188
+		ETag: W/"bc-f1MQ5JqHhxOyIGxa3oFwxfa5SXQ"
+		Date: Sat, 22 Jan 2022 06:01:45 GMT
+		Connection: keep-alive
+		Keep-Alive: timeout=5
+		```
+	+ Body
+		```json
+		{
+			"success": true,
+			"method": "GET",
+			"data": {
+				"id": 1,
+				"name": "Alvaro",
+				"uf": "BA",
+				"createdAt": "2022-01-22T06:01:23.456Z",
+				"updatedAt": "2022-01-22T06:01:23.456Z"
+			},
+			"message": "User finded successfully"
+		}
+		```
++ Response 404 (application/json)
+
+### Update User Data [PUT]
++ Request (application/json)
+	+ Body
+		```json
+		{
+			"phone": "27999999977",
+			"cpf": "000.125.011-60"
+		}
+		```
++ Response 200 (application/json)
+	+ Headers
+		```
+		X-Powered-By: Express
+		Content-Type: application/json; charset=utf-8
+		Content-Length: 96
+		ETag: W/"60-t4MkhR5I1vTfpmHDa24FSIVtGMQ"
+		Date: Sat, 22 Jan 2022 06:04:49 GMT
+		Connection: keep-alive
+		Keep-Alive: timeout=5
+		```
+	+ Body
+		```json
+		{
+			"success": true,
+			"method": "PUT",
+			"data": {
+				"wasUpdated": true
+			},
+			"message": "User updated successfully"
+		}
+		```
++ Response 404 (application/json)
+
+### Delete User [DELETE]
++ Response 200 (application/json)
+	+ Headers
+		```
+		X-Powered-By: Express
+		Content-Type: application/json; charset=utf-8
+		Content-Length: 99
+		ETag: W/"63-d41gfzGDEjm/hUyV+kQA3tK88SI"
+		Date: Sat, 22 Jan 2022 06:05:27 GMT
+		Connection: keep-alive
+		Keep-Alive: timeout=5
+		```
+	+ Body
+		```json
+		{
+			"success": true,
+			"method": "DELETE",
+			"data": {
+				"wasDeleted": true
+			},
+			"message": "User deleted successfully"
+		}
+		```
++ Response 404 (application/json)
+
+
+
+# Group Tools
+
+## Tools [/tools]
+
+### List All Tools [GET]
++ Response 200 (application/json)
+	+ Headers
+		```
+		X-Powered-By: Express
+		Content-Type: application/json; charset=utf-8
+		Content-Length: 767
+		ETag: W/"2ff-OzXTCiWZIHEtZwmzrW4qhDr5QU4"
+		Date: Sat, 22 Jan 2022 06:28:19 GMT
+		Connection: keep-alive
+		Keep-Alive: timeout=5
+		```
+	+ Body
+		```json
+		{
+			"success": true,
+			"method": "GET",
+			"data": [
+				{
+					"id": 1,
+					"user_id": 1,
+					"title": "Notion",
+					"link": "https://notion.so",
+					"description": "All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ",
+					"tags": [
+						"organization",
+						"planning",
+						"collaboration",
+						"writing",
+						"calendar"
+					],
+					"createdAt": "2022-01-22T06:24:30.902Z",
+					"updatedAt": "2022-01-22T06:24:30.902Z"
+				},
+				{
+					"id": 2,
+					"user_id": 1,
+					"title": "JSON Server",
+					"link": "https://github.com/typicode/json-server",
+					"description": "Fake REST API based on a json schema. Useful for mocking and creating APIs for front-end devs to consume in coding challenges.",
+					"tags": [
+						"api",
+						"json",
+						"schema",
+						"node",
+						"github",
+						"rest"
+					],
+					"createdAt": "2022-01-22T06:27:46.147Z",
+					"updatedAt": "2022-01-22T06:28:05.835Z"
+				}
+			],
+			"message": "Tools finded successfully"
+		}
+		```
++ Response 404 (application/json)
+
+
+## User Tools [/user/{user_id}/tools]
+
+### List All User Tools [GET]
++ Response 200 (application/json)
+	+ Headers
+		```
+		X-Powered-By: Express
+		Content-Type: application/json; charset=utf-8
+		Content-Length: 400
+		ETag: W/"190-2Op8lcmOeFhqfdFuMnL6Vbz3MTs"
+		Date: Sat, 22 Jan 2022 06:28:32 GMT
+		Connection: keep-alive
+		Keep-Alive: timeout=5
+		```
+	+ Body
+		```json
+		{
+			"success": true,
+			"method": "GET",
+			"data": [
+				{
+					"id": 1,
+					"user_id": 1,
+					"title": "Notion",
+					"link": "https://notion.so",
+					"description": "All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ",
+					"tags": [
+						"organization",
+						"planning",
+						"collaboration",
+						"writing",
+						"calendar"
+					],
+					"createdAt": "2022-01-22T06:24:30.902Z",
+					"updatedAt": "2022-01-22T06:24:30.902Z"
+				}
+			],
+			"message": "Tools finded successfully"
+		}
+		```
++ Response 404 (application/json)
+
+
+## User Tool Manipulation [/user/{user_id}/tool]
+
+### Create User Tool [POST]
++ Request (application/json)
+	+ Body
+		```json
+		{
+			"title": "json-server",
+			"link": "https://github.com/typicode/json-server",
+			"description": "Fake REST API based on a json schema. Useful for mocking and creating APIs for front-end devs to consume in coding challenges.",
+			"tags": [
+					"api",
+					"json",
+					"schema",
+					"node",
+					"github",
+					"rest"
+			]
+		}
+		```
++ Response 200 (application/json)
+	+ Headers
+		```
+		X-Powered-By: Express
+		Content-Type: application/json; charset=utf-8
+		Content-Length: 91
+		ETag: W/"5b-TayOHhlChRELyVeNavCWxWK8Hig"
+		Date: Sat, 22 Jan 2022 06:27:46 GMT
+		Connection: keep-alive
+		Keep-Alive: timeout=5
+		```
+	+ Body
+		```json
+		{
+			"success": true,
+			"method": "POST",
+			"data": {
+				"tool_id": 2
+			},
+			"message": "Tool created successfully"
+		}
+		```
++ Response 404 (application/json)
+
+
+## User Tool [/user/{user_id}/tool/{tool_id}]
+
+### Read User Tool Data [GET]
++ Response 200 (application/json)
+	+ Headers
+		```
+		X-Powered-By: Express
+		Content-Type: application/json; charset=utf-8
+		Content-Length: 397
+		ETag: W/"18d-1vzZPsmTzEA/mWxojZ+VQktIowU"
+		Date: Sat, 22 Jan 2022 06:27:57 GMT
+		Connection: keep-alive
+		Keep-Alive: timeout=5
+		```
+	+ Body
+		```json
+		{
+			"success": true,
+			"method": "GET",
+			"data": {
+				"id": 1,
+				"user_id": 1,
+				"title": "Notion",
+				"link": "https://notion.so",
+				"description": "All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ",
+				"tags": [
+					"organization",
+					"planning",
+					"collaboration",
+					"writing",
+					"calendar"
+				],
+				"createdAt": "2022-01-22T06:24:30.902Z",
+				"updatedAt": "2022-01-22T06:24:30.902Z"
+			},
+			"message": "Tool finded successfully"
+		}
+		```
++ Response 404 (application/json)
+
+### Update User Tool Data [PUT]
++ Request (application/json)
+	+ Body
+		```json
+		{
+			"title": "JSON Server",
+			"link": "https://github.com/typicode/json-server",
+			"description": "Fake REST API based on a json schema. Useful for mocking and creating APIs for front-end devs to consume in coding challenges.",
+			"tags": [
+					"api",
+					"json",
+					"schema",
+					"node",
+					"github",
+					"rest"
+			]
+		}
+		```
++ Response 200 (application/json)
+	+ Headers
+		```
+		X-Powered-By: Express
+		Content-Type: application/json; charset=utf-8
+		Content-Length: 81
+		ETag: W/"51-1ssMmKlQINow4wnln7w6j6HzM0E"
+		Date: Sat, 22 Jan 2022 06:28:05 GMT
+		Connection: keep-alive
+		Keep-Alive: timeout=5
+		```
+	+ Body
+		```json
+		{
+			"success": true,
+			"method": "PUT",
+			"data": true,
+			"message": "Tool updated successfully"
+		}
+		```
++ Response 404 (application/json)
+
+### Delete User Tool [DELETE]
++ Response 200 (application/json)
+	+ Headers
+		```
+		X-Powered-By: Express
+		Content-Type: application/json; charset=utf-8
+		Content-Length: 84
+		ETag: W/"54-YEof2i0K48uD0DOt1wK6Mfd4v+M"
+		Date: Sat, 22 Jan 2022 06:28:24 GMT
+		Connection: keep-alive
+		Keep-Alive: timeout=5
+		```
+	+ Body
+		```json
+		{
+			"success": true,
+			"method": "DELETE",
+			"data": true,
+			"message": "Tool deleted successfully"
+		}
+		```
++ Response 404 (application/json)

@@ -1,0 +1,34 @@
+
+version: "3.7"
+
+services:
+  app:
+    build: ./
+    container_name: UNID_API
+    command: node src/app.js
+    user: root
+    networks:
+      - default
+    ports:
+      - 3000:3000
+    depends_on:
+     - db
+    links:
+     - db
+
+  db:
+    image: postgres:latest
+    container_name: UNID_DB
+    user: root
+    environment:
+      POSTGRES_USER: postgres # default
+      POSTGRES_PASSWORD: password # password sample
+      POSTGRES_DB: database_name # database name sample
+    networks:
+      - default
+    ports:
+      - 5432:5432
+
+networks:
+  default:
+    driver: bridge
