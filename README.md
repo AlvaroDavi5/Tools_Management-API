@@ -54,8 +54,7 @@ ___
   - [x] HTTP Status Codes
 	- [x] REST Architecture
 - [x] API Routes
-- [ ] API Documentation (Blueprint)
+- [x] API Documentation (Blueprint)
 - [x] JWT/OAuth Authentication
-- [ ] Jest/Mocha/Cypress Testing
 - [x] Database Containerization
 - [x] API Containerization

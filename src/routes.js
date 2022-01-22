@@ -8,6 +8,9 @@ module.exports = function(app){
 	// sample:
 	// http://localhost:3000/user/:user_id/tool/:tool_id?token=XXXXXXXX&return_id=true
 
+	// --- index ---
+	app.get("/", index.info) // return index data (API info)
+
 	// --- users ---
 	app.post("/user/auth", users.userAuth) // authenticate user with JSON body and return id and token
 	app.post("/user", users.userCreate) // create user with JSON body and return id
@@ -22,7 +25,4 @@ module.exports = function(app){
 	app.get("/user/:user_id/tool/:tool_id", tools.toolRead) // get tool by id and token
 	app.put("/user/:user_id/tool/:tool_id", tools.toolUpdate) // update tool by id and token
 	app.delete("/user/:user_id/tool/:tool_id", tools.toolDelete) // delete tool by id and token
-
-	// --- index ---
-	app.get("/", index.info) // return index data (API info)
 }
