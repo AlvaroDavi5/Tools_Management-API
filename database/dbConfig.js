@@ -1,6 +1,5 @@
 const path = require('path')
 const dotenv = require('dotenv') // use environment variables to save sesitive data like database password
-dotenv.config({path:__dirname+"/../.env.development.local"})
 
 
 module.exports = {
